@@ -1,0 +1,64 @@
+@use './variables' as *;
+
+/* Breakpoint mixins */
+@mixin max-mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $laptop) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+/* Media  Mixins */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Mixin for removing hover efects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}
