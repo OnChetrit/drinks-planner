@@ -1,0 +1,39 @@
+{
+  "title": "Example Event",
+  "date": "2024-05-10",
+  "date_range": {
+    "start": "2024-05-10T18:00:00",
+    "end": "2024-05-11T02:00:00"
+  },
+  "image": "image.jpg",
+  "members_count": 50,
+  "men_women_ratio": {
+    "men": 30,
+    "women": 20
+  },
+  "age_range": {
+    "min": 18,
+    "max": 60
+  },
+  "alcohol_list": [
+    {
+      "name": "beer",
+      "quantityPerPerson": 2,
+      "percentage": 5,
+      "liters": 3,
+      "preparation": ["cup"]
+    },
+    {
+      "name": "wine",
+      "quantityPerPerson": 1,
+      "percentage": 12,
+      "preparation": ["cup"]
+    },
+    {
+      "name": "vodka",
+      "quantityPerPerson": 2,
+      "percentage": 40,
+      "preparation": ["mix"]
+    }
+  ]
+}

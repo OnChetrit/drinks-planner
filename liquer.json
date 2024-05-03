@@ -1,0 +1,23 @@
+[
+  {
+    "name": "vodka",
+    "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/",
+    "percentage": 40,
+    "person_per_litter": 4,
+    "preparation": ["mix", "shot"]
+  },
+  {
+    "name": "beer",
+    "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/",
+    "percentage": 5,
+    "person_per_litter": 2,
+    "preparation": ["mix"]
+  },
+  {
+    "name": "wine",
+    "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/",
+    "percentage": 12,
+    "person_per_litter": 1,
+    "preparation": ["cup"]
+  }
+]
