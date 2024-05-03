@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  height: 100dvh;
+
+  > aside {
+    flex-basis: 10rem;
+    flex-shrink: 0;
+    background: grey;
+  }
+
+  > main {
+    flex-grow: 1;
+  }
+}

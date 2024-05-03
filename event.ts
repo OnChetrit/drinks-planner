@@ -1,4 +1,4 @@
-type ev = {
+type event = {
   title: String;
   date: Date;
   date_range: {
@@ -17,23 +17,23 @@ type ev = {
   };
   alcohol_list: [
     {
-      name: 'beer';
-      quantityPerPerson: 2;
-      percentage: 5;
-      liters: 3;
-      preparation: ['cup'];
+      name: AlcoholNames;
+      // quantityPerPerson: 2;
+      // percentage: 5;
+      // liters: 3;
+      // preparation: ['cup'];
     },
     {
       name: 'wine';
-      quantityPerPerson: 1;
-      percentage: 12;
-      preparation: ['cup'];
     },
     {
       name: 'vodka';
-      quantityPerPerson: 2;
-      percentage: 40;
-      preparation: ['mix'];
     }
   ];
 };
+
+enum AlcoholNames {
+  Vodka = 'VODKA',
+  Beer = 'BEER',
+  Wine = 'WINE',
+}
