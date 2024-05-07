@@ -1,13 +1,13 @@
 'use server';
 
 type FormState = {
-  message: string;
+  title: string;
 };
 
-export const createEvent = async (formState: FormState, formData: FormData) => {
+export const createEvent = async (formData: FormData) => {
   await new Promise((resolve) => setTimeout(resolve, 250));
-  const text = formData.get('text') as string;
+  const title = formData.get('title') as string;
   return {
-    message: 'Message created: ' + text,
+    title: 'Message created: ' + title,
   };
 };

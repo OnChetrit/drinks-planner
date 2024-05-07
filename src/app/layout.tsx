@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import s from './layout.module.scss';
 import '@/styles/resets.scss';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
+const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,10 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} ${s.root}`}>
-        <aside>
+      <body className={`${openSans.className} ${s.root}`}>
+        {/* <aside>
           <Link href='/events'>Side Bar</Link>
-        </aside>
+        </aside> */}
         {children}
       </body>
     </html>
