@@ -7,7 +7,7 @@ export default function Home() {
     <main className={s.main}>
       <h1>Drinks App</h1>
       <AddEventForm />
-      <EventsTable />
+      {/* <EventsTable /> */}
     </main>
   );
 }
