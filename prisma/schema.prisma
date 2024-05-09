@@ -11,18 +11,38 @@ datasource db {
 }
 
 model Event {
-  id          Int       @id @default(autoincrement())
-  title       String
-  description String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  alcohols    Alcohol[]
+  id            Int             @id @default(autoincrement())
+  title         String
+  description   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  start_date    DateTime
+  end_date      DateTime
+  members_count Int
+  men_count     Int
+  women_count   Int
+  min_age       Int
+  max_age       Int
+  alcohols      DrinkForEvent[]
 }
 
-model Alcohol {
-  id      Int    @id @default(autoincrement())
-  name    String
-  image   String
-  Event   Event? @relation(fields: [eventId], references: [id])
-  eventId Int?
+model Drink {
+  id          Int             @id @default(autoincrement())
+  name        String
+  image       String
+  isAlcohol   Boolean
+  percentage  Int?
+  preparation String?
+  events      DrinkForEvent[]
+}
+
+model DrinkForEvent {
+  event      Event    @relation(fields: [eventId], references: [id])
+  eventId    Int // relation scalar field (used in the `@relation` attribute above)
+  drink      Drink    @relation(fields: [drinkId], references: [id])
+  drinkId    Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  quantity   Int
+
+  @@id([eventId, drinkId])
 }
