@@ -1,4 +1,4 @@
-import AddEventForm from '@/components/addEventForm';
+import AddEventForm from '@/components/AddEventForm/addEventForm';
 import s from './page.module.scss';
 import EventsTable from '@/components/EventsTable/eventsTable';
 
@@ -7,7 +7,7 @@ export default function Home() {
     <main className={s.main}>
       <h1>Drinks App</h1>
       <AddEventForm />
-      <EventsTable/>
+      <EventsTable />
     </main>
   );
 }

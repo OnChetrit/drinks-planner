@@ -1,4 +1,4 @@
-import AddEventForm from '@/components/addEventForm';
+import AddEventForm from '@/components/AddEventForm/addEventForm';
 import React from 'react';
 
 const EventsPage = () => {

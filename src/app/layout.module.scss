@@ -1,6 +1,6 @@
 .root {
   display: flex;
-  height: 100dvh;
+  min-height: 100dvh;
 
   > aside {
     flex-basis: 10rem;
