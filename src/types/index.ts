@@ -1,10 +1,10 @@
 export type Event = {
-  id: Number;
-  title: String;
-  description: String | null;
+  id: number;
+  title: string;
+  description: string | null;
   end_date: Date;
   start_date: Date;
-  members_count: Number;
+  members_count: number;
   men_women_ratio: GenderRatio;
   age_range: AgeRange;
   alcohol_list: Alcohol[] | undefined;
@@ -13,7 +13,7 @@ export type Event = {
 export type RequestEvent = {
   id: number;
   title: string;
-  description: String | null;
+  description: string | null;
   createdAt: Date;
   updatedAt: Date;
   start_date: Date;
@@ -31,21 +31,21 @@ export type DateRange = {
 };
 
 export type GenderRatio = {
-  men: Number;
-  women: Number;
+  men: number;
+  women: number;
 };
 
 export type AgeRange = {
-  min: Number;
-  max: Number;
+  min: number;
+  max: number;
 };
 
 export type Drink = {
-  name: String;
-  liters: Number;
+  name: string;
+  liters: number;
 };
 export type Alcohol = Drink & {
-  percentage: Number;
-  preparation: String[];
+  percentage: number;
+  preparation: string[];
   mix_drinks: Drink[] | null;
 };

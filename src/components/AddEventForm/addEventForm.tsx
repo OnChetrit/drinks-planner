@@ -1,35 +1,66 @@
 'use client';
+
 import { createEvent } from '@/app/actions';
-import React, { useContext } from 'react';
+import React, { useMemo } from 'react';
 import s from './addEventForm.module.scss';
 
-import { Input, DateInput, RangeInput, DoubleRangeInput } from '../FormInputs';
 import Button from '../Button';
-import EventContextProvider, {
-  AddEventDispatchContext,
-  useAddEventContext,
-} from '@/context/eventContextProvider';
+import { useAddEventContext, useAddEventDispatchContext } from '@/context/eventContextProvider';
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
+import StepThree from './StepThree';
 
 const AddEventForm = () => {
-  const dispatch = useContext(AddEventDispatchContext);
+  const dispatch = useAddEventDispatchContext();
   const context = useAddEventContext();
 
+  const formStep = useMemo(
+    () => (
+      <>
+        <StepOne hidden={context.currentStep !== 1} />
+        <StepTwo hidden={context.currentStep !== 2} />
+        <StepThree hidden={context.currentStep !== 3} />
+      </>
+    ),
+    [context?.currentStep]
+  );
+
+  const handleSubmit = () => {
+    dispatch({ type: 'change_step' });
+  };
+
+  const handleBack = () => {
+    dispatch({ type: 'step_back' });
+  };
+
   return (
-    <EventContextProvider>
-      <form action={createEvent} className={s.root}>
-        <Input type='text' label='Title' name='title' placeholder='Title' />
-        <Input type='text' label='Description' name='description' placeholder='Description' />
-        <DateInput label='From' name='start' />
-        <DateInput label='To' name='end' />
-        <Input type='number' label='Members Count' name='members_count' />
-        <RangeInput label='Gender Ratio' name='gender_ratio' />
-        <RangeInput label='Age Range' name='age_range' min={25} max={35} />
-        <DoubleRangeInput label='Age Range' name='age_range' min={25} max={35} />
-        <Button variant='primary' title='submit' type='submit'>
-          submit
+    <form action={createEvent} className={s.root}>
+      {formStep}
+
+      {context.currentStep !== 1 && (
+        <Button variant='primary' type='button' onClick={handleBack}>
+          Back
         </Button>
-      </form>
-    </EventContextProvider>
+      )}
+
+      <Button
+        variant='primary'
+        type='button'
+        onClick={handleSubmit}
+        hidden={context.currentStep !== 3}
+      >
+        Continue
+      </Button>
+
+      <Button
+        variant='primary'
+        type='submit'
+        onClick={handleSubmit}
+        hidden={context.currentStep === 3}
+      >
+        Submit
+      </Button>
+    </form>
   );
 };
 

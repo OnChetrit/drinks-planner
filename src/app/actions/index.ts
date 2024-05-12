@@ -8,6 +8,8 @@ const prisma = new PrismaClient();
 export const createEvent = async (formData: FormData): Promise<void> => {
   await new Promise((resolve) => setTimeout(resolve, 250));
 
+  console.log('formData', formData);
+
   const start = new Date(formData.get('start') as string).toISOString();
   const end = new Date(formData.get('end') as string).toISOString();
   const membersCount = formData.get('members_count') as string;
@@ -34,6 +36,10 @@ export const createEvent = async (formData: FormData): Promise<void> => {
 export const getEvents = async () => {
   const events = await prisma.event.findMany();
   return events.map((event) => formatEvent(event));
+};
+
+export const getAlcohols = async () => {
+  return await prisma.drink.findMany();
 };
 
 const formatEvent = (requestEvent: RequestEvent): Event => {

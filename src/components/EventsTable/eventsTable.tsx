@@ -7,6 +7,14 @@ const EventsTable = async () => {
   console.log('events', events);
   const columns = events.length ? Object.keys(events[0]) : [];
 
+  if (!columns.length) {
+    return (
+      <div className='no-result'>
+        <h2>No results found</h2>
+      </div>
+    );
+  }
+
   return (
     <table className={s.root}>
       <thead>
@@ -19,10 +27,11 @@ const EventsTable = async () => {
       <tbody>
         {events.map((ev) => {
           const values = Object.values(ev);
+          console.log('values', values);
           return (
-            <tr key={ev.id}>
-              {values.map((value) => {
-                return <td key={ev.id + value?.toString()!}>{value?.toString()}</td>;
+            <tr key={ev.id as Key}>
+              {values.map((value, index) => {
+                return <td key={ev.id + index + value?.toString()!}>{value?.toString()}</td>;
               })}
             </tr>
           );
