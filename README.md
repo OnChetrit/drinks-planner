@@ -1,1 +1,1 @@
-# drinks-planner
+# Next js 14 with prisma
